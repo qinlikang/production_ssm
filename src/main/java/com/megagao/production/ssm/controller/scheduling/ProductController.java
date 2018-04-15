@@ -61,7 +61,12 @@ public class ProductController {
 	
 	@RequestMapping("/list")
 	@ResponseBody
-	public EUDataGridResult getItemList(Integer page, Integer rows, Product product) throws Exception{
+	public EUDataGridResult getItemList(Integer page, Integer rows, Product product,HttpServletRequest request) throws Exception{
+		String username = (String) request.getSession().getAttribute("username");
+		 String rolename = (String) request.getSession().getAttribute("rolename");
+		 if("管理员".equals(rolename)){
+			 product.setProductType(username);
+		 }
 		EUDataGridResult result = productService.getList(page, rows, product);
 		return result;
 	}

@@ -27,7 +27,7 @@
 	            <td>所属用户:</td>
 	            <td>
 	            	<input class="easyui-combobox" name="productType"   
-    					data-options="valueField:'id',textField:'username',
+    					data-options="valueField:'username',textField:'username',
     						url:'user/get_data', editable:false, required:true" />
     			</td>  
 	        </tr>

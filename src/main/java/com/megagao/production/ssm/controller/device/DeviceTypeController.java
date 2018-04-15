@@ -53,10 +53,10 @@ public class DeviceTypeController {
 	@ResponseBody
 	public EUDataGridResult getList(Integer page, Integer rows, Condition condition,HttpServletRequest request) throws Exception{
 		String currentUserId = (String) SecurityUtils.getSubject().getSession().getAttribute("activeUser"); 
-		 String userid = (String) request.getSession().getAttribute("userid");
+		 String username = (String) request.getSession().getAttribute("username");
 		 String rolename = (String) request.getSession().getAttribute("rolename");
 		 if("管理员".equals(rolename)){
-			 condition.setUserid(userid);
+			 condition.setUserid(username);
 		 }
 
 		if(null==condition.getStartDateString()){

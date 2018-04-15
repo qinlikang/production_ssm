@@ -4,10 +4,12 @@ import java.util.List;
 
 import com.megagao.production.ssm.domain.Product;
 import com.megagao.production.ssm.domain.ProductExample;
+import com.megagao.production.ssm.domain.ProductExample.Criteria;
 import com.megagao.production.ssm.domain.customize.CustomResult;
 import com.megagao.production.ssm.mapper.ProductMapper;
 import com.megagao.production.ssm.service.ProductService;
 import com.megagao.production.ssm.domain.customize.EUDataGridResult;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +26,10 @@ public class ProductServiceImpl implements ProductService {
 	public EUDataGridResult getList(int page, int rows, Product product) throws Exception{
 		//查询产品列表
 		ProductExample example = new ProductExample();
+		if(null!=product.getProductType()){
+		Criteria criteria = example.createCriteria();
+		criteria.andProductTypeEqualTo(product.getProductType());
+		}
 		//分页处理
 		PageHelper.startPage(page, rows);
 		List<Product> list = productMapper.selectByExample(example);

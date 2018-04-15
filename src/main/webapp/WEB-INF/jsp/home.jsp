@@ -160,9 +160,9 @@
 						<ul>
 							<li data-options="attributes:{'url':'user/find'}">用户管理</li>
 						</ul>
-<!-- 						<ul>
+<!--  						<ul>
 							<li data-options="attributes:{'url':'role/find'}">角色管理</li>
-						</ul> -->
+						</ul>  -->
 					</li>
 				</ul>
 			</div>

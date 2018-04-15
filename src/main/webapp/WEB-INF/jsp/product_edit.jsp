@@ -20,7 +20,11 @@
 	        <tr>
 	            <td>所属用户:</td>
 	            <td>
-	            	<input class="easyui-textbox" value="${activeUser.username}" type="text" name="productType" data-options="required:true"/>
+	            	            <td>
+	            	<input class="easyui-combobox" name="productType"   
+    					data-options="valueField:'username',textField:'username',
+    						url:'user/get_data', editable:false, required:true" />
+    			</td> 
     			</td>  
 	        </tr>
 

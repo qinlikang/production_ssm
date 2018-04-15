@@ -58,7 +58,7 @@ public class FirstController {
 		model.addAttribute(ACTIVE_USER, activeUser);
 		session.setAttribute("sysPermissionList", sysPermissionList);
 		session.setAttribute("rolename", activeUser.getRolename());
-		session.setAttribute("userid", activeUser.getUserid());
+		session.setAttribute("username", activeUser.getUsername());
 		return "home";
 	}
 }	
