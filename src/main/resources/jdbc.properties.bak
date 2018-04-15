@@ -1,0 +1,11 @@
+jdbc.driverClassName=com.mysql.jdbc.Driver
+
+#jdbc.url=jdbc\:mysql\://47.98.124.118\:3306/production
+jdbc.url=jdbc\:mysql\://47.98.124.118\:3306/production?useUnicode\=true&characterEncoding\=utf8
+jdbc.username=root
+
+jdbc.password=jiangzh
+severurl=http://47.98.124.118
+#severurl=http://localhost:8080
+#severurl=http://47.74.185.229:8080
+#severurl=http://w.igeeker.xyz
