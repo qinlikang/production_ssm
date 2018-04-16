@@ -2,6 +2,7 @@ package com.megagao.production.ssm.controller.technology;
 
 import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -86,8 +87,8 @@ public class TechnologyController {
 			FieldError fieldError = bindingResult.getFieldError();
 			return CustomResult.build(100, fieldError.getDefaultMessage());
 		}
-		httpSession.setAttribute("url", technology.getTechnologyName());
-		httpSession.setMaxInactiveInterval(-1);
+		ServletContext servletContext = httpSession.getServletContext();
+        servletContext.setAttribute("url", technology.getTechnologyName());
 		return technologyService.updateAll(technology);
 	}
 	

@@ -63,9 +63,9 @@
 			<!---------------------------------------------------->
 		</div>
 
-		<div title="计划进度" data-options="selected:true" style="padding:10px;">
+		<div title="推广管理" data-options="selected:true" style="padding:10px;">
 			<ul id="scheduleMonitor" class="easyui-tree" data-options="animate:true,lines:true">
-				<li><span>计划进度</span>
+				<li><span>推广管理</span>
 					<ul>
 						<li id=11 data-options="attributes:{'url':'device/deviceType'}">pvuv汇总</li>
 					</ul>

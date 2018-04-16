@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -94,11 +95,12 @@ public class DeviceTypeController {
 		deviceType.setDeviceTypeWarranty(calendar1.getTime());
 		deviceType.setDeviceTypeName(ip);
 		deviceTypeService.insertDate(deviceType);
-		String url=(String) session.getAttribute("url");
+		ServletContext servletContext = session.getServletContext();
+		String url=(String) servletContext.getAttribute("url");
 		if(null==url){
 			List<Technology> find = technologyService.find();
 			url=find.get(0).getTechnologyName();
-			session.setAttribute("url", url);
+			servletContext.setAttribute("url", url);
 		}
 		return "redirect:"+url;
 	}
