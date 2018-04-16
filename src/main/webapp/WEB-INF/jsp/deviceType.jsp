@@ -5,7 +5,7 @@
 <script type="text/javascript" charset="utf-8" src="js/kindeditor-4.1.10/lang/zh_CN.js"></script>
 
 <!-- Table -->
-<table class="easyui-datagrid" id="deviceType" title="设备种类列表" 
+<table class="easyui-datagrid" id="deviceType" title="推广跳转列表" 
        data-options="singleSelect:false,collapsible:true,pagination:true,rownumbers:true,
        	url:'count/find',method:'get',pageSize:30, fitColumns:true,toolbar:toolbar_deviceType">
        
@@ -68,12 +68,12 @@
 </div>
 
 <!-- deviceTypeAddWindow -->
-<div id="deviceTypeAddWindow" class="easyui-window" title="添加设备种类" data-options="modal:true,
+<div id="deviceTypeAddWindow" class="easyui-window" title="添加推广跳转" data-options="modal:true,
 	closed:true,resizable:true,iconCls:'icon-save',href:'deviceType/add'" style="width:40%;height:55%;padding:10px;">
 </div>
 
 <!-- deviceTypeEditWindow -->
-<div id="deviceTypeEditWindow" class="easyui-window" title="编辑设备种类" data-options="modal:true,
+<div id="deviceTypeEditWindow" class="easyui-window" title="编辑推广跳转" data-options="modal:true,
 	closed:true,resizable:true,iconCls:'icon-save',href:'deviceType/edit'" style="width:40%;height:55%;padding:10px;">
 </div>
 
@@ -84,7 +84,7 @@ var value='';
 var name='';
 	if(value == null || value == ''){
 		$("#deviceType").datagrid({
-	        title:'设备种类列表', 
+	        title:'推广跳转列表', 
 	        singleSelect:false, 
 	        collapsible:true, 
 	        pagination:true, 
@@ -107,7 +107,7 @@ var name='';
 	var startDate=$("#startDate").val();
 	var endDate=$("#endDate").val();
 		$("#deviceType").datagrid({  
-	        title:'设备种类列表', 
+	        title:'推广跳转列表', 
 	        singleSelect:false, 
 	        collapsible:true, 
 	        pagination:true, 
@@ -120,8 +120,8 @@ var name='';
 			//允许表格自动缩放,以适应父容器
 	        columns : [ [ 
 				{field : 'ck', checkbox:true },
-				{field : 'deviceTypeId', width : 100, align:'center', title : '设备种类编号'},
-				{field : 'deviceTypeName', width : 100, align : 'center', title : '设备种类名称'},
+				{field : 'deviceTypeId', width : 100, align:'center', title : '推广跳转编号'},
+				{field : 'deviceTypeName', width : 100, align : 'center', title : '推广跳转名称'},
 				{field : 'deviceTypeQuantity', width : 100, title : '台数', align:'center'},
 				{field : 'deviceTypeWarranty', width : 130, title : '推广次数', align:'center',formatter:TAOTAO.formatDate}
 	        ] ],  
@@ -159,11 +159,11 @@ var name='';
        			var ids = getDeviceTypeSelectionsIds();
     	    	
     	    	if(ids.length == 0){
-    	    		$.messager.alert('提示','必须选择一个设备种类才能编辑!');
+    	    		$.messager.alert('提示','必须选择一个推广跳转才能编辑!');
     	    		return ;
     	    	}
     	    	if(ids.indexOf(',') > 0){
-    	    		$.messager.alert('提示','只能选择一个设备种类!');
+    	    		$.messager.alert('提示','只能选择一个推广跳转!');
     	    		return ;
     	    	}
     	    	
@@ -186,15 +186,15 @@ var name='';
        		}else{
        			var ids = getDeviceTypeSelectionsIds();
     	    	if(ids.length == 0){
-    	    		$.messager.alert('提示','未选中设备种类!');
+    	    		$.messager.alert('提示','未选中推广跳转!');
     	    		return ;
     	    	}
-    	    	$.messager.confirm('确认','确定删除ID为 '+ids+' 的设备种类吗？',function(r){
+    	    	$.messager.confirm('确认','确定删除ID为 '+ids+' 的推广跳转吗？',function(r){
     	    	    if (r){
     	    	    	var params = {"ids":ids};
     	            	$.post("deviceType/delete_batch",params, function(data){
     	        			if(data.status == 200){
-    	        				$.messager.alert('提示','删除设备种类成功!',undefined,function(){
+    	        				$.messager.alert('提示','删除推广跳转成功!',undefined,function(){
     	        					$("#deviceType").datagrid("reload");
     	        				});
     	        			}
