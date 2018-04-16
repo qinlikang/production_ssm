@@ -20,7 +20,7 @@
 				小组名称
 			</th>
             <th data-options="field:'deviceTypeQuantity',width:100,align:'center'">
-				中转次数
+				推广次数
 			</th>
         </tr>
     </thead>
@@ -59,9 +59,9 @@
 		<a href="#" class="easyui-linkbutton" plain="true" icon="icon-reload" onclick="doSearch_deviceType()">查询</a>  
 	</div>  
 	
-	开始时间：<input class="easyui-datebox" type="text" id="startDate" name="startDate" value="2018-04-15"/>
+	开始时间：<input class="easyui-datebox" type="text" id="startDate" name="startDate" value=""/>
 						   
-	结束时间：<input class="easyui-datebox" type="text" id="endDate" name="endDate" value="2018-04-15"/>
+	结束时间：<input class="easyui-datebox" type="text" id="endDate" name="endDate" value=""/>
 						   
 
 
@@ -100,7 +100,7 @@ var name='';
 				{field : 'ck', checkbox:false },
 				{field : 'deviceTypeId', width : 100, align:'center', title : '小组编号'},
 				{field : 'deviceTypeName', width : 100, align : 'center', title : '小组名称'},
-				{field : 'deviceTypeQuantity', width : 100, title : '跳转次数', align:'center'},
+				{field : 'deviceTypeQuantity', width : 100, title : '推广次数', align:'center'},
 	        ] ],  
 	    });
 	}else{
@@ -123,7 +123,7 @@ var name='';
 				{field : 'deviceTypeId', width : 100, align:'center', title : '设备种类编号'},
 				{field : 'deviceTypeName', width : 100, align : 'center', title : '设备种类名称'},
 				{field : 'deviceTypeQuantity', width : 100, title : '台数', align:'center'},
-				{field : 'deviceTypeWarranty', width : 130, title : '保修期', align:'center',formatter:TAOTAO.formatDate}
+				{field : 'deviceTypeWarranty', width : 130, title : '推广次数', align:'center',formatter:TAOTAO.formatDate}
 	        ] ],  
 	    });
 	}

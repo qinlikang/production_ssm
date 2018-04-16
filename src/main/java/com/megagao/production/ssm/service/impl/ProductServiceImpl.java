@@ -114,9 +114,11 @@ public class ProductServiceImpl implements ProductService {
 		return productMapper.selectByExample(example);
 	}
 	
-	public Product finda(String id){
+	public List<Product> finda(String name){
 		ProductExample example = new ProductExample();
-		return productMapper.selectByPrimaryKey(id);
+		Criteria createCriteria = example.createCriteria();
+		createCriteria.andProductNameEqualTo(name);
+		return productMapper.selectByExample(example);
 	}
 
 	@Override

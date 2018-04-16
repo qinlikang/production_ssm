@@ -2,6 +2,7 @@ package com.megagao.production.ssm.controller.scheduling;
 
 import java.io.File;
 import java.util.List;
+import java.util.Random;
 import java.util.ResourceBundle;
 
 import javax.servlet.http.HttpServletRequest;
@@ -80,9 +81,15 @@ public class ProductController {
 			return CustomResult.build(100, fieldError.getDefaultMessage());
 		}
 		
-		if(productService.get(product.getProductId()) != null){
-			result = new CustomResult(0, "该小组编号已经存在，请更换小组编号！", null);
-		}else{
+		if(productService.finda(product.getProductName()).size()>0){
+			return CustomResult.build(101, "该小组名已经存在，请更换小组名!");
+		} 
+		Random rand = new Random();
+		rand.nextInt(999999);
+		product.setProductId(rand.nextInt(999999)+"");
+		while(productService.get(product.getProductId()) != null){
+			product.setProductId(rand.nextInt(999999)+"");
+		}
 			//生产二维码
 			String dirpath=request.getSession().getServletContext().getRealPath("/").toString()+"qcode";
 			File pathdir = new File(dirpath);
@@ -98,8 +105,9 @@ public class ProductController {
 			String contentUrl=key+"/production_ssm/count/get/"+product.getProductId();
 			product.setNote(contentUrl);
 			QRCode.encoderQRCode(contentUrl,path, "png", 10);
+			
 			result = productService.insert(product);
-		}
+		
 		return result;
 	}
 	

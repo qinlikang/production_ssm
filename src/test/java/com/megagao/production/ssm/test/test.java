@@ -1,12 +1,17 @@
 package com.megagao.production.ssm.test;
 
+import java.util.Date;
+
 import com.megagao.production.ssm.domain.Custom;
 import com.megagao.production.ssm.service.CustomService;
 import com.megagao.production.ssm.util.FileUtil;
+
 import org.joda.time.DateTime;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import sun.tools.tree.NewArrayExpression;
 
 
 public class test {
@@ -24,7 +29,7 @@ public class test {
 	
 	@Test
 	public void testFile1(){
-		FileUtil.deleteFile("F:\\upload\\temp\\file\\"+"新建文本文档(2016-10-05).txt");
+		System.out.println(new Date().toString());
 	}
 	
 	@Test

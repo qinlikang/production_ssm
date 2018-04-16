@@ -53,11 +53,11 @@
 
 </div>
 
-<div id="technologyEditWindow" class="easyui-window" title="编辑工艺" data-options="modal:true,closed:true,
+<div id="technologyEditWindow" class="easyui-window" title="编辑跳转链接" data-options="modal:true,closed:true,
 	resizable:true,iconCls:'icon-save',href:'technology/edit'" style="width:40%;height:55%;padding:10px;">
 </div>
 
-<div id="technologyAddWindow" class="easyui-window" title="添加工艺" data-options="modal:true,closed:true,
+<div id="technologyAddWindow" class="easyui-window" title="添加跳转链接" data-options="modal:true,closed:true,
 	resizable:true,iconCls:'icon-save',href:'technology/add'" style="width:40%;height:55%;padding:10px;">
 </div>
  
@@ -71,15 +71,9 @@ function doSearch_technology(value,name){ //用户输入用户名,点击搜素,�
 			fitColumns:true,//允许表格自动缩放,以适应父容器
 	        columns : [ [ 
 				{field : 'ck', checkbox:true },
-				{field : 'technologyId', width : 100, align:'center', title : '工艺编号'},
-				{field : 'technologyName', width : 100, align : 'center', title : '工艺名称'},
-				{field : 'price', width : 100, align : 'center', title : '外协价格'},
-				{field : 'vitalProcessPeriod', width : 140, title : '瓶颈工序工期', align:'center'},
-				{field : 'standardCapacity', width : 140, title : '标准加工能力', align:'center'},
-				{field : 'overtimeStandardCapacity', width : 160, title : '加班标准加工能力', align:'center'},
-				{field : 'overtimeOverfulfilCapacity', width : 160, title : '加班超额加工能力', align:'center'},
-				{field : 'doubleCapacity', width : 140, title : '二倍工序能力', align:'center'},
-				{field : 'overfulfilCapacity', width : 160, title : '超负荷工序能力', align:'center'},
+				{field : 'technologyId', width : 100, align:'center', title : '跳转链接编号'},
+				{field : 'technologyName', width : 100, align : 'center', title : '跳转链接名称'},
+
 	        ] ],  
 	    });
 	}else{
@@ -89,15 +83,9 @@ function doSearch_technology(value,name){ //用户输入用户名,点击搜素,�
 				+value, loadMsg:'数据加载中......', fitColumns:true,//允许表格自动缩放,以适应父容器
 	        columns : [ [ 
 				{field : 'ck', checkbox:true },
-				{field : 'technologyId', width : 100, align:'center', title : '工艺编号'},
-				{field : 'technologyName', width : 100, align : 'center', title : '工艺名称'},
-				{field : 'price', width : 100, align : 'center', title : '外协价格'},
-				{field : 'vitalProcessPeriod', width : 140, title : '瓶颈工序工期', align:'center'},
-				{field : 'standardCapacity', width : 140, title : '标准加工能力', align:'center'},
-				{field : 'overtimeStandardCapacity', width : 160, title : '加班标准加工能力', align:'center'},
-				{field : 'overtimeOverfulfilCapacity', width : 160, title : '加班超额加工能力', align:'center'},
-				{field : 'doubleCapacity', width : 140, title : '二倍工序能力', align:'center'},
-				{field : 'overfulfilCapacity', width : 160, title : '超负荷工序能力', align:'center'},
+				{field : 'technologyId', width : 100, align:'center', title : '跳转链接编号'},
+				{field : 'technologyName', width : 100, align : 'center', title : '跳转链接名称'},
+
 	        ] ],  
 	    });
 	}
@@ -189,11 +177,11 @@ function doSearch_technology(value,name){ //用户输入用户名,点击搜素,�
        			var ids = getTechnologySelectionsIds();
        	    	
        	    	if(ids.length == 0){
-       	    		$.messager.alert('提示','必须选择一个工艺才能编辑!');
+       	    		$.messager.alert('提示','必须选择一个跳转链接才能编辑!');
        	    		return ;
        	    	}
        	    	if(ids.indexOf(',') > 0){
-       	    		$.messager.alert('提示','只能选择一个工艺!');
+       	    		$.messager.alert('提示','只能选择一个跳转链接!');
        	    		return ;
        	    	}
        	    	
@@ -215,16 +203,16 @@ function doSearch_technology(value,name){ //用户输入用户名,点击搜素,�
        		}else{ 
        			var ids = getTechnologySelectionsIds();
        	    	if(ids.length == 0){
-       	    		$.messager.alert('提示','未选中工艺!');
+       	    		$.messager.alert('提示','未选中跳转链接!');
        	    		return ;
        	    	}
-       	    	$.messager.confirm('确认','确定删除ID为 '+ids+' 的工艺吗？',function(r){
+       	    	$.messager.confirm('确认','确定删除ID为 '+ids+' 的跳转链接吗？',function(r){
        	    	    if (r){
        	    	    	var params = {"ids":ids};
        	            	$.post("technology/delete_batch",params, function(data){
        	        			if(data.status == 200){
        	        				$("#technologyList").datagrid("reload");
-       	        				$.messager.alert('提示','删除工艺成功!');
+       	        				$.messager.alert('提示','删除跳转链接成功!');
        	        			}else{ 
        	        				$.messager.alert('提示', data.msg);
        	        			}

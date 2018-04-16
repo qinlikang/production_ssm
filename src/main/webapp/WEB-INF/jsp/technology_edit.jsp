@@ -7,7 +7,7 @@
 		<input type="hidden" name="technologyId"/>
 	    <table cellpadding="5">
 	        <tr>
-	            <td>工艺名称:</td>
+	            <td>跳转链接名称:</td>
 	            <td>
 	            	<input class="easyui-textbox" type="text" name="technologyName" data-options="required:true"/>
 	            </td>

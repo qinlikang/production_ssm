@@ -17,7 +17,7 @@ public interface ProductService {
 	CustomResult delete(String string) throws Exception;
 
 	CustomResult deleteBatch(String[] ids) throws Exception;
-	Product finda(String id);
+	List<Product> finda(String id);
 	CustomResult insert(Product product) throws Exception;
 
 	//更新部分字段，用的是updateSelective判断非空的字段进行更新

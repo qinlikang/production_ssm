@@ -11,12 +11,6 @@
 	<form id="productAddForm" class="productForm" method="post">
 	    <table cellpadding="5" >
 	        <tr>
-	            <td>小组编号:</td>
-	            <td>
-	            	<input class="easyui-textbox" type="text" name="productId" data-options="required:true"/>
-	            </td>
-	        </tr>
-	        <tr>
 	            <td>小组名称:</td>
 	            <td>
 	            	<input class="easyui-textbox" type="text" name="productName" data-options="required:true"/>

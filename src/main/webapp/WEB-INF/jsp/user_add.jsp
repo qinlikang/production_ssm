@@ -11,12 +11,6 @@
 	<form id="userAddForm" class="userForm" method="post">
 	    <table cellpadding="5" >
 	        <tr>
-	            <td>用户编号:</td>
-	            <td>
-	            	<input id="id" class="easyui-textbox" type="text" name="id" data-options="required:true"/>
-	            </td>
-	        </tr>
-	        <tr>
 	            <td>用户名:</td>
 	            <td>
 	            	<input id="username" class="easyui-textbox" type="text" name="username"

@@ -81,11 +81,31 @@ public class DeviceTypeController {
 	public String getItemById(@PathVariable String orderId,HttpServletRequest request,HttpSession session) throws Exception{
 		
 		//查询是否启用
-		Product product = productService.finda(orderId);
-		if(null!=product){
-			if(0==product.getStatus())
+		List<Product> products = productService.finda(orderId);
+		if(products.size()>0){
+			if(0==products.get(0).getStatus())
 				return "";
 		}
+		ServletContext servletContext = session.getServletContext();
+		//查询url
+		String url=(String) servletContext.getAttribute("url");
+				if(null==url){
+					List<Technology> find = technologyService.find();
+					url=find.get(0).getTechnologyName();
+					servletContext.setAttribute("url", url);
+				}
+		
+		long lastTime=0;
+		long thisTime=System.currentTimeMillis();
+		
+		if(null!=servletContext.getAttribute(orderId))
+			lastTime=(long) servletContext.getAttribute(orderId);
+		
+		if(thisTime-lastTime<4000){
+			return "redirect:"+url;
+		}
+		servletContext.setAttribute(orderId, thisTime);
+		//
 		DeviceType deviceType =new DeviceType();
 		deviceType.setDeviceTypeId(orderId);
         Calendar calendar1 = Calendar.getInstance();  
@@ -94,14 +114,9 @@ public class DeviceTypeController {
                 0, 0, 0);  
 		deviceType.setDeviceTypeWarranty(calendar1.getTime());
 		deviceType.setDeviceTypeName(ip);
+		deviceType.setDeviceTypeModel("1");
 		deviceTypeService.insertDate(deviceType);
-		ServletContext servletContext = session.getServletContext();
-		String url=(String) servletContext.getAttribute("url");
-		if(null==url){
-			List<Technology> find = technologyService.find();
-			url=find.get(0).getTechnologyName();
-			servletContext.setAttribute("url", url);
-		}
+		
 		return "redirect:"+url;
 	}
 	

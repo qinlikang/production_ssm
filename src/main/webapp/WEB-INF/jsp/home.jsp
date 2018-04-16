@@ -67,13 +67,13 @@
 			<ul id="scheduleMonitor" class="easyui-tree" data-options="animate:true,lines:true">
 				<li><span>推广管理</span>
 					<ul>
-						<li id=11 data-options="attributes:{'url':'device/deviceType'}">pvuv汇总</li>
+						<li id=11 data-options="attributes:{'url':'device/deviceType'}">推广跳转汇总</li>
 					</ul>
 <!-- 					<ul>
 						<li id=12 data-options="attributes:{'url':'device/deviceTypeDay'}">pvuv日汇总</li>
 					</ul> -->
 					<ul>
-						<li id=13 data-options="attributes:{'url':'product/find'}">小组管理</li>
+						<li id=13 data-options="attributes:{'url':'product/find'}">推广小组管理</li>
 					</ul>
 					<ul>
 						<li id=16 data-options="attributes:{'url':'technology/find'}">跳转链接设置</li>

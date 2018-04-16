@@ -18,6 +18,40 @@
   
   
   <select id="selectByCondition"  resultMap="AddResultMap" parameterType="com.megagao.production.ssm.domain.Condition" >
+    select sum(IFNULL(device_type_model,0)) device_type_quantity ,p.product_name device_type_name,p.product_id  device_type_id
+    from (
+    select distinct * from device_type t
+    where 1=1
+    <if test="startDate != null" >
+       and t.device_type_warranty&gt;=#{startDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="endDate != null" >
+       and t.device_type_warranty&lt;=#{endDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="startDateString != null" >
+       and t.device_type_warranty&gt;=#{startDateString}
+    </if>
+    <if test="endDateString != null" >
+       and t.device_type_warranty&lt;=#{endDateString}
+    </if>
+    ) t right outer join product p
+	on t.device_type_id=p.product_id
+ 	where 1=1
+ 	 <if test="userid != null" >
+       and p.product_type=#{userid}
+    </if>
+	<if test="name != null" >
+       and p.product_name LIKE CONCAT(
+				'%',
+				#{name},'%' ) 
+    </if>
+      
+	group by t.device_type_id,p.product_name,p.product_id
+
+
+  </select>
+  
+  <select id="selectByConditionDay"  resultMap="AddResultMap" parameterType="com.megagao.production.ssm.domain.Condition" >
     select count(*) device_type_quantity ,t.device_type_id,p.product_name device_type_name,p.product_id 
     from (
     select distinct * from device_type t
@@ -46,36 +80,6 @@
     </if>
       
 	group by t.device_type_id,p.product_name,p.product_id
-
-
-  </select>
-  
-  <select id="selectByConditionDay"  resultMap="AddResultMap" parameterType="com.megagao.production.ssm.domain.Condition" >
-     select count(*) device_type_quantity ,t.device_type_id,p.product_name device_type_name 
-    from (
-    select distinct * from device_type t
-    where 1=1
-    <if test="startDate != null" >
-       and t.device_type_warranty&gt;=#{startDate,jdbcType=TIMESTAMP}
-    </if>
-    <if test="endDate != null" >
-       and t.device_type_warranty&lt;=#{endDate,jdbcType=TIMESTAMP}
-    </if>
-    <if test="startDateString != null" >
-       and t.device_type_warranty&gt;=#{startDateString}
-    </if>
-    <if test="endDateString != null" >
-       and t.device_type_warranty&lt;=#{endDateString}
-    </if>
-    ) t,product p
- 	where t.device_type_id=p.product_id
-	<if test="name != null" >
-       and p.product_name LIKE CONCAT(
-				'%',
-				#{name},'%' ) 
-    </if>
-    
-	group by t.device_type_id,p.product_name
   </select>
 	<!-- 扩展的sql -->
 	<!-- 查询所有记录 -->

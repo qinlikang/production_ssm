@@ -1,6 +1,7 @@
 package com.megagao.production.ssm.controller.system;
 
 import java.util.List;
+import java.util.Random;
 
 import javax.validation.Valid;
 
@@ -73,10 +74,14 @@ public class UserController {
 			FieldError fieldError = bindingResult.getFieldError();
 			return CustomResult.build(100, fieldError.getDefaultMessage());
 		}
-		if(userService.findByUserNameAndId(user.getUsername(), user.getId()).size()>0){
+		if(userService.findByUserNameAndId(user.getUsername(), null).size()>0){
 			return CustomResult.build(101, "该用户名已经存在，请更换用户名!");
-		}else if(userService.get(user.getId()) != null){
-			return CustomResult.build(101, "该用户编号已经存在，请更换用户编号！");
+		} 
+		Random rand = new Random();
+		rand.nextInt(999999);
+		user.setId(rand.nextInt(999999)+"");
+		while(userService.get(user.getId()) != null){
+			user.setId(rand.nextInt(999999)+"");
 		}
 		result = userService.insert(user);
 		return result;
